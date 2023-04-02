@@ -9,7 +9,6 @@ function Home() {
 
   useEffect(() => {
     getTrends().then(setTrendes).then(console.log(trendes));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

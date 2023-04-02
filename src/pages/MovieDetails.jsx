@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { getDetails } from '../Util/api';
@@ -29,12 +29,26 @@ function MovieDetails() {
           ))}
         </p>
         <p>{details?.overview}</p>
+        <hr />
+        <p>Additional information:</p>
+        <br />
+        <br />
+        <ul>
+          <li>
+            <Link to={'/movies/' + id + '/cast'}>Cast</Link>
+          </li>
+          <li>
+            <Link to={'/movies/' + id + '/reviews'}>Reviews</Link>
+          </li>
+        </ul>
       </div>
     )
   );
 }
 
 export default MovieDetails;
+
+// https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US
 
 // https://image.tmdb.org/t/p/w500
 

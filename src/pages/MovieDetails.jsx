@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { getDetails } from '../Util/api';
@@ -9,6 +9,7 @@ function MovieDetails() {
 
   useEffect(() => {
     getDetails(id).then(setDetails).then(console.log(details));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { id } = useParams();
@@ -35,12 +36,13 @@ function MovieDetails() {
         <br />
         <ul>
           <li>
-            <Link to={'/movies/' + id + '/cast'}>Cast</Link>
+            <Link to={'cast'}>Cast</Link>
           </li>
           <li>
-            <Link to={'/movies/' + id + '/reviews'}>Reviews</Link>
+            <Link to={'reviews'}>Reviews</Link>
           </li>
         </ul>
+        <Outlet />
       </div>
     )
   );

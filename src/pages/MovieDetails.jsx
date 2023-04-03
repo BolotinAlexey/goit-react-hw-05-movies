@@ -1,4 +1,4 @@
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { getDetails } from '../Util/api';
@@ -15,6 +15,8 @@ function MovieDetails() {
     overview = '',
   } = details ?? {};
 
+  const location = useLocation();
+
   useEffect(() => {
     getDetails(id).then(setDetails);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -26,6 +28,9 @@ function MovieDetails() {
   return (
     details && (
       <div>
+        <p>
+          <Link to={location.state?.from}>Go back</Link>
+        </p>
         <Poster width={200} url={poster_path} alt={name}></Poster>
         <p>
           {original_title}

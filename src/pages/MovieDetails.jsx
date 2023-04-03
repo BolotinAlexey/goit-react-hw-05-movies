@@ -1,9 +1,10 @@
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
-import { useEffect, useState, Suspense } from 'react';
+import { useEffect, useState, Suspense, useRef } from 'react';
+
+import { Details } from './pages.styled';
 
 import { getDetails } from '../Util/api';
 import Poster from '../components/Poster';
-import { useRef } from 'react';
 
 function MovieDetails() {
   const [details, setDetails] = useState(null);
@@ -29,26 +30,33 @@ function MovieDetails() {
 
   return (
     details && (
-      <div>
+      <Details>
         <p>
           {/* link to back */}
           <Link to={comeBack.current}>Go back</Link>
         </p>
-        <Poster width={200} url={poster_path} alt={name}></Poster>
-        <p>
-          {original_title}
-          <span> ({release_date.substring(0, 4)})</span>
-        </p>
-        <p>
-          {genres?.map(({ id, name }) => (
-            <li key={id}>{name}</li>
-          ))}
-        </p>
-        <p>{overview}</p>
+        <article className="card">
+          <Poster width={200} url={poster_path} alt={name}></Poster>
+          <div className="subscribe">
+            <h2>
+              {original_title}
+              <span> ({release_date.substring(0, 4)})</span>
+            </h2>
+            <h3>
+              Genries:
+              <span> {genres.map(({ name }) => name).join(', ')}</span>
+            </h3>
+            {/* <p>
+              {genres?.map(({ id, name }) => (
+                <li key={id}>{name}</li>
+              ))}
+            </p> */}
+            <h3>Overview:</h3>
+            <p>{overview}</p>
+          </div>
+        </article>
         <hr />
-        <br />
         <p>Additional information:</p>
-        <br />
         <ul>
           <li>
             <Link to={'cast'}>Cast</Link>
@@ -60,7 +68,7 @@ function MovieDetails() {
         <Suspense>
           <Outlet />
         </Suspense>
-      </div>
+      </Details>
     )
   );
 }

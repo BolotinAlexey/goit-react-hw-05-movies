@@ -1,9 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
+import { Ol } from './ListMovies.styled';
 
 function ListMovies({ list }) {
   const location = useLocation();
   return (
-    <ul>
+    <Ol>
       {list &&
         list.map(({ title, name, id }) => (
           <li key={id}>
@@ -12,7 +13,7 @@ function ListMovies({ list }) {
             </Link>
           </li>
         ))}
-    </ul>
+    </Ol>
   );
 }
 

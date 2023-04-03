@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 import ListMovies from '../components/ListMovies/ListMovies';
 import { getTrends } from '../Util/api';
-// import { proc } from '../Util/proc';
 
 function Home() {
   const [trendes, setTrendes] = useState(null);
@@ -19,4 +19,8 @@ function Home() {
     </>
   );
 }
+
+Home.propTypes = {
+  list: PropTypes.arrayOf(PropTypes.object),
+};
 export default Home;

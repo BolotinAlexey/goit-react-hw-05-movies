@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import ListMovies from '../components/ListMovies/ListMovies';
 import { getMovies } from '../Util/api';
@@ -50,6 +51,8 @@ const Movies = () => {
   );
 };
 
-export default Movies;
+Movies.propTypes = {
+  list: PropTypes.arrayOf(PropTypes.object),
+};
 
-// https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
+export default Movies;

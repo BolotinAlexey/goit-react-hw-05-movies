@@ -16,13 +16,11 @@ export async function getDetails(id) {
 
 export async function getCast(id) {
   const response = await axios(BASE + 'movie/' + id + '/credits' + KEY + LANG);
-  console.log(response.data.cast);
   return response.data.cast;
 }
 
 export async function getReview(id) {
   const response = await axios(BASE + 'movie/' + id + '/reviews' + KEY + LANG);
-  console.log(response.data);
   return response.data.results;
 }
 
@@ -39,5 +37,3 @@ export async function getMovies(q) {
 
   return response.data.results;
 }
-
-// https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false

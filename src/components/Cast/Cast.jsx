@@ -8,7 +8,7 @@ function Cast() {
   const { id } = useParams();
   const [casts, setCasts] = useState(null);
   useEffect(() => {
-    getCast(id)?.then(setCasts)?.then(console.log(casts));
+    getCast(id)?.then(setCasts);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -17,19 +17,18 @@ function Cast() {
     { casts } && (
       <>
         <p>Cast</p>
-        {casts?.map(
-          ({ profile_path, name, character, cast_id }) =>
-            profile_path &&
-            name &&
-            character && (
-              <li className="thumb-cast" key={cast_id}>
-                <p>Character: {character}</p>
-                <p>Name: {name}</p>
-                <Poster width={100} url={profile_path} alt={name}></Poster>
-                <br />
-                <br />
-              </li>
-            )
+        {casts?.length === 0 ? (
+          <p>We don't have any casts for this movies</p>
+        ) : (
+          casts?.map(({ profile_path, name, character, cast_id }) => (
+            <li className="thumb-cast" key={cast_id}>
+              <p>Character: {character || 'none'}</p>
+              <p>Name: {name || 'none'}</p>
+              <Poster width={100} url={profile_path} alt={name}></Poster>
+              <br />
+              <br />
+            </li>
+          ))
         )}
       </>
     )

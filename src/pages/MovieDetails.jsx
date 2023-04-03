@@ -1,8 +1,9 @@
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 
 import { getDetails } from '../Util/api';
 import Poster from '../components/Poster';
+import { useRef } from 'react';
 
 function MovieDetails() {
   const [details, setDetails] = useState(null);
@@ -16,6 +17,7 @@ function MovieDetails() {
   } = details ?? {};
 
   const location = useLocation();
+  const comeBack = useRef(location.state?.from || '/');
 
   useEffect(() => {
     getDetails(id).then(setDetails);
@@ -29,7 +31,8 @@ function MovieDetails() {
     details && (
       <div>
         <p>
-          <Link to={location.state?.from}>Go back</Link>
+          {/* link to back */}
+          <Link to={comeBack.current}>Go back</Link>
         </p>
         <Poster width={200} url={poster_path} alt={name}></Poster>
         <p>
@@ -37,7 +40,6 @@ function MovieDetails() {
           <span> ({release_date.substring(0, 4)})</span>
         </p>
         <p>
-          {/* {details?.genres} */}
           {genres?.map(({ id, name }) => (
             <li key={id}>{name}</li>
           ))}
@@ -45,7 +47,6 @@ function MovieDetails() {
         <p>{overview}</p>
         <hr />
         <br />
-
         <p>Additional information:</p>
         <br />
         <ul>
@@ -56,87 +57,12 @@ function MovieDetails() {
             <Link to={'reviews'}>Reviews</Link>
           </li>
         </ul>
-        <Outlet />
+        <Suspense>
+          <Outlet />
+        </Suspense>
       </div>
     )
   );
 }
 
 export default MovieDetails;
-
-// https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US
-
-// https://image.tmdb.org/t/p/w500
-
-// backdrop_path
-// :
-// "/bT3IpP7OopgiVuy6HCPOWLuaFAd.jpg"
-// belongs_to_collection
-// :
-// {id: 929336, name: 'Murder Mystery Collection', poster_path: '/tXvqgUtguLjVVYqyAOy0eYtm5lH.jpg', backdrop_path: '/dsHP6PVJkMuJgftxHMHAhnYNqtG.jpg'}
-// budget
-// :
-// 0
-// genres
-// :
-// (3) [{…}, {…}, {…}]
-// homepage
-// :
-// "https://www.netflix.com/title/81212842"
-// id
-// :
-// 638974
-// imdb_id
-// :
-// "tt15255288"
-// original_language
-// :
-// "en"
-// original_title
-// :
-// "Murder Mystery 2"
-// overview
-// :
-// "After starting their own detective agency, Nick and Audrey Spitz land a career-making case when their billionaire pal is kidnapped from his wedding."
-// popularity
-// :
-// 235.901
-// poster_path
-// :
-// "/5wpVy0KUWzDKDKgrayM0Q8lXOiK.jpg"
-// production_companies
-// :
-// (5) [{…}, {…}, {…}, {…}, {…}]
-// production_countries
-// :
-// [{…}]
-// release_date
-// :
-// "2023-03-26"
-// revenue
-// :
-// 0
-// runtime
-// :
-// 90
-// spoken_languages
-// :
-// [{…}]
-// status
-// :
-// "Released"
-// tagline
-// :
-// "This mystery is deux or die."
-// title
-// :
-// "Murder Mystery 2"
-// video
-// :
-// false
-// vote_average
-// :
-// 6.772
-// vote_count
-// :
-// 197

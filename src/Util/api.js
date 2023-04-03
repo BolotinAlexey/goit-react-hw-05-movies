@@ -25,3 +25,19 @@ export async function getReview(id) {
   console.log(response.data);
   return response.data.results;
 }
+
+export async function getMovies(q) {
+  const response = await axios(
+    BASE +
+      'search/movie' +
+      KEY +
+      LANG +
+      '/&query=' +
+      q +
+      '&page=1&include_adult=false'
+  );
+
+  return response.data.results;
+}
+
+// https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false

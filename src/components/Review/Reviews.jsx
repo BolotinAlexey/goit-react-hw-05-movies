@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import { getReview } from '../../Util/api';
-// import Poster from '../Poster';
 
 function Reviews() {
   const { id } = useParams();

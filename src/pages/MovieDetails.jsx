@@ -16,7 +16,7 @@ function MovieDetails() {
   } = details ?? {};
 
   useEffect(() => {
-    getDetails(id).then(setDetails).then(console.log(details));
+    getDetails(id).then(setDetails);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

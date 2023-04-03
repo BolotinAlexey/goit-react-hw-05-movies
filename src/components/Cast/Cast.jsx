@@ -18,17 +18,17 @@ function Cast() {
       <>
         <p>Cast</p>
         {casts?.map(
-          ({ profile_path, name, character }) =>
+          ({ profile_path, name, character, cast_id }) =>
             profile_path &&
             name &&
             character && (
-              <div className="thumb-cast">
+              <li className="thumb-cast" key={cast_id}>
                 <p>Character: {character}</p>
                 <p>Name: {name}</p>
                 <Poster width={100} url={profile_path} alt={name}></Poster>
                 <br />
                 <br />
-              </div>
+              </li>
             )
         )}
       </>

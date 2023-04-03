@@ -19,3 +19,9 @@ export async function getCast(id) {
   console.log(response.data.cast);
   return response.data.cast;
 }
+
+export async function getReview(id) {
+  const response = await axios(BASE + 'movie/' + id + '/reviews' + KEY + LANG);
+  console.log(response.data);
+  return response.data.results;
+}

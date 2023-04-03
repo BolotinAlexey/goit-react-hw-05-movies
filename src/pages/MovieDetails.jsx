@@ -6,6 +6,14 @@ import Poster from '../components/Poster';
 
 function MovieDetails() {
   const [details, setDetails] = useState(null);
+  const {
+    poster_path = '',
+    original_title = '',
+    name = '',
+    release_date = '',
+    genres = '',
+    overview = '',
+  } = details ?? {};
 
   useEffect(() => {
     getDetails(id).then(setDetails).then(console.log(details));
@@ -18,21 +26,22 @@ function MovieDetails() {
   return (
     details && (
       <div>
-        <Poster url={details?.poster_path} alt={details?.name}></Poster>
+        <Poster width={200} url={poster_path} alt={name}></Poster>
         <p>
-          {details?.original_title}
-          <span> ({details?.release_date.substring(0, 4)})</span>
+          {original_title}
+          <span> ({release_date.substring(0, 4)})</span>
         </p>
         <p>
           {/* {details?.genres} */}
-          {details?.genres?.map(el => (
-            <li key={el.id}>{el.name}</li>
+          {genres?.map(({ id, name }) => (
+            <li key={id}>{name}</li>
           ))}
         </p>
-        <p>{details?.overview}</p>
+        <p>{overview}</p>
         <hr />
-        <p>Additional information:</p>
         <br />
+
+        <p>Additional information:</p>
         <br />
         <ul>
           <li>

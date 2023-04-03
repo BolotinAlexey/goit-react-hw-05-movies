@@ -10,7 +10,6 @@ function Reviews() {
   const [review, setReview] = useState(null);
   useEffect(() => {
     getReview(id)?.then(setReview);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, review?.length]);
 
   return (

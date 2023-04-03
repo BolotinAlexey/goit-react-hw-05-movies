@@ -20,12 +20,11 @@ function MovieDetails() {
   const location = useLocation();
   const comeBack = useRef(location.state?.from || '/');
 
+  const { id } = useParams();
   useEffect(() => {
     getDetails(id).then(setDetails);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
 
-  const { id } = useParams();
   //   const { poster_path, name, genres, overview, release_date } = details;
 
   return (

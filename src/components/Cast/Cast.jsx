@@ -12,9 +12,7 @@ function Cast() {
   const [casts, setCasts] = useState(null);
   useEffect(() => {
     getCast(id)?.then(setCasts);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
 
   return (
     { casts } && (

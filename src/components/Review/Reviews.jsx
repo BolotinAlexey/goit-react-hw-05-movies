@@ -41,5 +41,3 @@ Reviews.propTypes = {
 };
 
 export default Reviews;
-
-// https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1

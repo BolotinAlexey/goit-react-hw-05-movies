@@ -40,16 +40,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://bolotinalexey.github.io/goit-react-hw-05-movies.git"
-  },
-  "keywords": [],
-  "author": "Oleksii Bolotin",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://bolotinalexey.github.io/goit-react-hw-05-movies/issues"
   }
 }

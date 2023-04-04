@@ -18,10 +18,10 @@ export const Wrap = styled.div`
     bottom: 0;
     left: 0;
     right: 0; */
-    padding: 10px 0;
+    /* padding: 10px 0;
     -webkit-box-shadow: 0px 11px 15px 8px rgba(66, 68, 90, 1);
     -moz-box-shadow: 0px 11px 15px 8px rgba(66, 68, 90, 1);
-    box-shadow: 0px 11px 15px 8px rgba(66, 68, 90, 1);
+    box-shadow: 0px 11px 15px 8px rgba(66, 68, 90, 1); */
   }
 `;
 

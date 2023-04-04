@@ -5,11 +5,18 @@ export const Wrap = styled.div`
   padding: 0 10px;
 
   header {
-    padding: 10px;
+    padding: 10px 0;
     margin-bottom: 20px;
     -webkit-box-shadow: 0px 11px 15px -8px rgba(66, 68, 90, 1);
     -moz-box-shadow: 0px 11px 15px -8px rgba(66, 68, 90, 1);
     box-shadow: 0px 11px 15px -8px rgba(66, 68, 90, 1);
+  }
+
+  footer {
+    padding: 10px 0;
+    -webkit-box-shadow: 0px 11px 15px 8px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 11px 15px 8px rgba(66, 68, 90, 1);
+    box-shadow: 0px 11px 15px 8px rgba(66, 68, 90, 1);
   }
 `;
 

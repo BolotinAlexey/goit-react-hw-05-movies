@@ -11,6 +11,4 @@ export const CastStyled = styled.div`
   li {
     margin-bottom: 20px;
   }
-  .thumb-cast {
-  }
 `;
